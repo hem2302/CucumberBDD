@@ -1,0 +1,34 @@
+package pagebojects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class LandingPage {
+
+	WebDriver driver;
+
+	public LandingPage(WebDriver driver) {
+		this.driver = driver;
+	}
+
+	By search = By.xpath("//input[@type='search']");
+	By productName = By.cssSelector("h4.product-name");
+	By topDealsLink = By.linkText("Top Deals");
+
+	public void SearchItem(String name) {
+		driver.findElement(search).sendKeys(name);
+
+	}
+
+	public void getSearchItem() {
+		driver.findElement(search).getText();
+	}
+
+	public String getTheProductName() {
+		return driver.findElement(productName).getText().split("-")[0].trim();
+	}
+
+	public void clickTopDeals() {
+		driver.findElement(topDealsLink).click();
+	}
+}
