@@ -23,7 +23,7 @@ public class OfferPageStepDefinition {
 		this.testContextSetup = testContextSetup;
 	}
 
-	@Then("user searched for {string} shortname in offers page")
+	@Then("^user searched for (.+) shortname in offers page$")
 	public void user_searched_for_same_shortname_in_offers_page(String shortName) throws InterruptedException {
 		switchToOffersPage();
 
@@ -40,13 +40,7 @@ public class OfferPageStepDefinition {
 		LandingPage landingPage = testContextSetup.pageObjectManager.getLandingPage();// create object for landing page
 																						// using pageobject manager
 		landingPage.clickTopDeals();
-		String parentWindow = testContextSetup.driver.getWindowHandle();
-		Set<String> handle = testContextSetup.driver.getWindowHandles();
-		for (String child : handle) {
-			if (!parentWindow.equalsIgnoreCase(child)) {
-				testContextSetup.driver.switchTo().window(child);
-			}
-		}
+		testContextSetup.genericUtils.switchWindowToChild();
 	}
 
 	@And("validate product name in offers page matches with the landing page")
