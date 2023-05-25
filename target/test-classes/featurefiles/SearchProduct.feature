@@ -1,5 +1,6 @@
 Feature: Search and place the order for products
 
+@Offerstest
 Scenario Outline: Search experience for product search in both home page and offers page
 
 Given user is on GreenCart landing page
@@ -10,4 +11,4 @@ And validate product name in offers page matches with the landing page
 Examples:
 |Name|
 |Tom|
-|Beet|
+|beet|

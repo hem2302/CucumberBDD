@@ -1,7 +1,5 @@
 package step.definitions;
 
-import java.util.Set;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -31,6 +29,7 @@ public class OfferPageStepDefinition {
 																					// using pageobject manager
 		offersPage.OffersPageSearchItem(shortName);
 		Thread.sleep(5000);
+
 		offersPageProductName = offersPage.OffersPageSearchGetItemText().trim();
 
 	}

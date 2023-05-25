@@ -7,13 +7,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 public class BaseTest {
 
 	public WebDriver driver;
 	public String url;
-	public String browser;
+	public String browserProperties;
 
 	public WebDriver WebDriverManager() throws IOException {
 
@@ -22,7 +23,9 @@ public class BaseTest {
 		Properties prop = new Properties();
 		prop.load(fis);
 		url = prop.getProperty("url");
-		browser = prop.getProperty("browser");
+		browserProperties = prop.getProperty("browser");
+		String mavenBrowser = System.getProperty("browser");
+		String browser = mavenBrowser != null ? mavenBrowser : browserProperties;
 
 		if (browser.equals("chrome")) {
 			if (driver == null) {
@@ -42,6 +45,7 @@ public class BaseTest {
 				driver.get(url);
 			}
 		}
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		return driver;
 
 	}

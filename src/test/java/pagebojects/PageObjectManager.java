@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 public class PageObjectManager {
 	public LandingPage landingPage;
 	public OffersPage offersPage;
+	public CheckoutPage checkOutPage;
 	WebDriver driver;
 
 	public PageObjectManager(WebDriver driver) {
@@ -20,5 +21,11 @@ public class PageObjectManager {
 	public OffersPage getOffersPage() {
 		offersPage = new OffersPage(driver);
 		return offersPage;
+	}
+
+	public CheckoutPage getCheckoutPage() {
+		checkOutPage = new CheckoutPage(driver);
+		return checkOutPage;
+
 	}
 }
